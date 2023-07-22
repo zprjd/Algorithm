@@ -62,36 +62,36 @@ class TreeNode {
     }
 }
 
-class Solution {
-    public static TreeNode trimBST(TreeNode root, int low, int high) {
-        if (root == null)   return null;
-        if (root.val < low) {//把不符合范围要求的节点干掉，怎么干掉呢，跳过返回他，遍历返回他的孩子就干掉了
-            return trimBST(root.right, low, high);//搜索树的特性
-        }
-        if(root.val > high) {
-            return trimBST(root.left, low, high);
-        }
-        root.left = trimBST(root.left, low, high);
-        root.right = trimBST(root.right, low, high);
-        return root; //root底下可能有不符合的，怎么做这一个判断？
-        //判断都是由函数去做的，也就是说再次调用这个函数，将返回值赋值给节点的子节点就好了
-    }
-
-    public static void main(String[] args) {
-        TreeNode left = new TreeNode(0);
-        TreeNode right = new TreeNode(2);
-        TreeNode root = new TreeNode(1, left, right);
-        trimBST(root,1, 2);
-        printVal(root);
-        printVal(root.left);
-        printVal(root.right);
-    }
-
-    private static void printVal(TreeNode node) {
-        if (node == null) {
-            System.out.println("null");
-        } else {
-            System.out.println(node.val);
-        }
-    }
-}
+//class Solution {
+//    public static TreeNode trimBST(TreeNode root, int low, int high) {
+//        if (root == null)   return null;
+//        if (root.val < low) {//把不符合范围要求的节点干掉，怎么干掉呢，跳过返回他，遍历返回他的孩子就干掉了
+//            return trimBST(root.right, low, high);//搜索树的特性
+//        }
+//        if(root.val > high) {
+//            return trimBST(root.left, low, high);
+//        }
+//        root.left = trimBST(root.left, low, high);
+//        root.right = trimBST(root.right, low, high);
+//        return root; //root底下可能有不符合的，怎么做这一个判断？
+//        //判断都是由函数去做的，也就是说再次调用这个函数，将返回值赋值给节点的子节点就好了
+//    }
+//
+//    public static void main(String[] args) {
+//        TreeNode left = new TreeNode(0);
+//        TreeNode right = new TreeNode(2);
+//        TreeNode root = new TreeNode(1, left, right);
+//        trimBST(root,1, 2);
+//        printVal(root);
+//        printVal(root.left);
+//        printVal(root.right);
+//    }
+//
+//    private static void printVal(TreeNode node) {
+//        if (node == null) {
+//            System.out.println("null");
+//        } else {
+//            System.out.println(node.val);
+//        }
+//    }
+//}
